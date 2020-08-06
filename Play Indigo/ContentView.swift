@@ -13,25 +13,24 @@ struct ContentView: View {
  
     var body: some View {
         TabView(selection: $selection){
-            Text("First View")
-                .font(.title)
-                .tabItem {
-                    VStack {
-                        Image("first")
-                        Text("First")
-                    }
-                }
+            PlayerView()
                 .tag(0)
-            Text("Second View")
-                .font(.title)
                 .tabItem {
                     VStack {
-                        Image("second")
-                        Text("Second")
+                        Image(systemName: "music.note")
+                        Text("Player")
                     }
                 }
-                .tag(1)
+            SearchView()
+            .tag(1)
+                .tabItem {
+                    VStack {
+                        Image(systemName: "magnifyingglass")
+                        Text("Search")
+                    }
+                }
         }
+        .accentColor(.pink)
     }
 }
 
