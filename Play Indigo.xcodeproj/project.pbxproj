@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BE29B97D24DDE6A90075DC87 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE29B97C24DDE6A90075DC87 /* SwiftyJSON.swift */; };
+		BE29B97F24DDEC7B0075DC87 /* AppleMusicAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE29B97E24DDEC7B0075DC87 /* AppleMusicAPI.swift */; };
+		BE29B98124DDEC940075DC87 /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE29B98024DDEC940075DC87 /* Song.swift */; };
 		BE73E41124DC7EC00080BABA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE73E41024DC7EC00080BABA /* AppDelegate.swift */; };
 		BE73E41324DC7EC00080BABA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE73E41224DC7EC00080BABA /* SceneDelegate.swift */; };
 		BE73E41524DC7EC00080BABA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE73E41424DC7EC00080BABA /* ContentView.swift */; };
@@ -18,6 +21,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BE29B97C24DDE6A90075DC87 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
+		BE29B97E24DDEC7B0075DC87 /* AppleMusicAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleMusicAPI.swift; sourceTree = "<group>"; };
+		BE29B98024DDEC940075DC87 /* Song.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
 		BE73E40D24DC7EC00080BABA /* Play Indigo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Play Indigo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE73E41024DC7EC00080BABA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BE73E41224DC7EC00080BABA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -68,6 +74,9 @@
 				BE73E41624DC7EC30080BABA /* Assets.xcassets */,
 				BE73E41B24DC7EC30080BABA /* LaunchScreen.storyboard */,
 				BE73E41E24DC7EC30080BABA /* Info.plist */,
+				BE29B97C24DDE6A90075DC87 /* SwiftyJSON.swift */,
+				BE29B97E24DDEC7B0075DC87 /* AppleMusicAPI.swift */,
+				BE29B98024DDEC940075DC87 /* Song.swift */,
 				BE73E41824DC7EC30080BABA /* Preview Content */,
 			);
 			path = "Play Indigo";
@@ -154,7 +163,10 @@
 			files = (
 				BE73E42724DC93050080BABA /* SearchView.swift in Sources */,
 				BE73E41124DC7EC00080BABA /* AppDelegate.swift in Sources */,
+				BE29B97F24DDEC7B0075DC87 /* AppleMusicAPI.swift in Sources */,
 				BE73E41324DC7EC00080BABA /* SceneDelegate.swift in Sources */,
+				BE29B98124DDEC940075DC87 /* Song.swift in Sources */,
+				BE29B97D24DDE6A90075DC87 /* SwiftyJSON.swift in Sources */,
 				BE73E41524DC7EC00080BABA /* ContentView.swift in Sources */,
 				BE73E42524DC88E30080BABA /* PlayerView.swift in Sources */,
 			);
