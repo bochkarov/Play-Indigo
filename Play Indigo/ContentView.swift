@@ -8,13 +8,15 @@
 
 import SwiftUI
 import StoreKit
+import MediaPlayer
 
 struct ContentView: View {
     @State private var selection = 0
+    @State private var musicPlayer = MPMusicPlayerController.applicationMusicPlayer
  
     var body: some View {
         TabView(selection: $selection){
-            PlayerView()
+            PlayerView(musicPlayer: self.$musicPlayer)
                 .tag(0)
                 .tabItem {
                     VStack {
@@ -22,7 +24,7 @@ struct ContentView: View {
                         Text("Player")
                     }
                 }
-            SearchView()
+            SearchView(musicPlayer: self.$musicPlayer)
             .tag(1)
                 .tabItem {
                     VStack {
@@ -32,13 +34,13 @@ struct ContentView: View {
                 }
         }
         .accentColor(.pink)
-        .onAppear() {
-            SKCloudServiceController.requestAuthorization { (status) in
-                if status == .authorized {
-                    print(AppleMusicAPI().fetchStorefrontID())
-                }
-            }
-        }
+//        .onAppear() {
+//            SKCloudServiceController.requestAuthorization { (status) in
+//                if status == .authorized {
+//                    print(AppleMusicAPI() .searchAppleMusic("Valik Indigo"))
+//                }
+//            }
+//        }
     }
 }
 

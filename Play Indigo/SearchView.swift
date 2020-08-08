@@ -7,14 +7,31 @@
 //
 
 import SwiftUI
+import StoreKit
+import MediaPlayer
 
 struct SearchView: View {
     @State private var searchText = ""
-    let songs = ["Volnami", "Kaif", "Tam Lesa", "ChP Lyubvi"]
+    @State private var searchResults = [Song]()
+    @Binding var musicPlayer: MPMusicPlayerController
+    
     var body: some View {
         VStack {
             TextField("Search Songs", text: $searchText, onCommit: {
-                print(self.searchText)
+                // 1
+                UIApplication.shared.resignFirstResponder()
+                if self.searchText.isEmpty {
+                    // 2
+                    self.searchResults = []
+                } else {
+                    // 3
+                    SKCloudServiceController.requestAuthorization { (status) in
+                        if status == .authorized {
+                            // 4
+                            self.searchResults = AppleMusicAPI().searchAppleMusic(self.searchText)
+                        }
+                    }
+                }
             })
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .padding(.horizontal, 16)
@@ -22,7 +39,7 @@ struct SearchView: View {
             
             List {
                 // 1
-                ForEach(songs, id:\.self) { songTitle in
+                ForEach(searchResults, id:\.id) { song in
                     // 2
                     HStack {
                         // 3
@@ -34,16 +51,17 @@ struct SearchView: View {
                         
                         // 4
                         VStack(alignment: .leading) {
-                            Text(songTitle)
+                            Text(song.name)
                                 .font(.headline)
-                            Text("Artist Name")
+                            Text(song.artistName)
                                 .font(.caption)
                                 .foregroundColor(.secondary)
                         }
                         Spacer()
                         // 5
                         Button(action: {
-                            print("Playing \(songTitle)")
+                            self.musicPlayer.setQueue(with: [song.id])
+                            self.musicPlayer.play()
                         }) {
                             Image(systemName: "play.fill")
                                 .foregroundColor(.pink)
@@ -56,8 +74,3 @@ struct SearchView: View {
     }
 }
 
-struct SearchView_Previews: PreviewProvider {
-    static var previews: some View {
-        SearchView()
-    }
-}

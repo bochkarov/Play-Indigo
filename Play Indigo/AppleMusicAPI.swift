@@ -66,4 +66,38 @@ class AppleMusicAPI {
         lock.wait()
         return storefrontID
     }
+    
+    func searchAppleMusic(_ searchTerm: String!) -> [Song] {
+        let lock = DispatchSemaphore(value: 0)
+        var songs = [Song]()
+        let musicURL = URL(string: "https://api.music.apple.com/v1/catalog/\(fetchStorefrontID())/search?term=\(searchTerm.replacingOccurrences(of: " ", with: "+"))&types=songs&limit=25")!
+        var musicRequest = URLRequest(url: musicURL)
+        musicRequest.httpMethod = "GET"
+        musicRequest.addValue("Bearer \(developerToken)", forHTTPHeaderField: "Authorization")
+        musicRequest.addValue(getUserToken(), forHTTPHeaderField: "Music-User-Token")
+        URLSession.shared.dataTask(with: musicRequest) { (data, response, error) in
+            guard error == nil else { return }
+            // 1
+            if let json = try? JSON(data: data!) {
+                // 2
+                let result = (json["results"]["songs"]["data"]).array!
+                // 3
+                for song in result {
+                    // 4
+                    let attributes = song["attributes"]
+                    let currentSong = Song(id: attributes["playParams"]["id"].string!, name: attributes["name"].string!, artistName: attributes["artistName"].string!, artworkURL: attributes["artwork"]["url"].string!)
+                    songs.append(currentSong)
+                }
+                // 5
+                lock.signal()
+            } else {
+                lock.signal()
+            }
+            
+        }.resume()
+        lock.wait()
+        return songs
+
+
+    }
 }

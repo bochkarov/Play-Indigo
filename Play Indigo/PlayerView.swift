@@ -7,8 +7,12 @@
 //
 
 import SwiftUI
+import MediaPlayer
 
 struct PlayerView: View {
+    @Binding var musicPlayer: MPMusicPlayerController
+    @State private var isPlaying = false
+    
     var body: some View {
         GeometryReader { geometry in
             // 1
@@ -20,9 +24,9 @@ struct PlayerView: View {
                     .cornerRadius(20)
                     .shadow(radius: 10)
                 VStack(spacing: 8) {
-                    Text("Song Title")
+                    Text(self.musicPlayer.nowPlayingItem?.title ?? "Not Playing")
                         .font(Font.system(.title).bold())
-                    Text("Artist Name")
+                    Text(self.musicPlayer.nowPlayingItem?.artist ?? "")
                         .font(.system(.headline))
                 }
                 HStack(spacing: 40) {
@@ -42,14 +46,20 @@ struct PlayerView: View {
                     }
                     Button(action: {
                         // 1
-                        print("Pause")
+                        if self.musicPlayer.playbackState == .paused || self.musicPlayer.playbackState == .stopped {
+                            self.musicPlayer.play()
+                            self.isPlaying = true
+                        } else {
+                            self.musicPlayer.pause()
+                            self.isPlaying = false
+                        }
                     }) {
                         ZStack {
                             Circle()
                                 .frame(width: 80, height: 80)
                                 .accentColor(.pink)
                                 .shadow(radius: 10)
-                            Image(systemName: "pause.fill")
+                            Image(systemName: self.isPlaying ? "pause.fill" : "play.fill")
                                 .foregroundColor(.white)
                                 .font(.system(.title))
                         }
@@ -71,10 +81,13 @@ struct PlayerView: View {
                 }
             }
         }
+        .onAppear() {
+        if self.musicPlayer.playbackState == .playing {
+            self.isPlaying = true
+        } else {
+            self.isPlaying = false
+        }
+    }
     }
 }
-struct PlayerView_Previews: PreviewProvider {
-    static var previews: some View {
-        PlayerView()
-    }
-}
+
