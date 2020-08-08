@@ -32,7 +32,11 @@ struct PlayerView: View {
                 HStack(spacing: 40) {
                     Button(action: {
                         // 1
-                        print("Rewind")
+                        if self.musicPlayer.currentPlaybackTime < 5 {
+                            self.musicPlayer.skipToPreviousItem()
+                        } else {
+                            self.musicPlayer.skipToBeginning()
+                        }
                     }) {
                         ZStack {
                             Circle()
@@ -66,7 +70,7 @@ struct PlayerView: View {
                     }
                     Button(action: {
                         // 1
-                        print("Skip")
+                        self.musicPlayer.skipToNextItem()
                     }) {
                         ZStack {
                             Circle()
@@ -82,12 +86,12 @@ struct PlayerView: View {
             }
         }
         .onAppear() {
-        if self.musicPlayer.playbackState == .playing {
-            self.isPlaying = true
-        } else {
-            self.isPlaying = false
+            if self.musicPlayer.playbackState == .playing {
+                self.isPlaying = true
+            } else {
+                self.isPlaying = false
+            }
         }
-    }
     }
 }
 
