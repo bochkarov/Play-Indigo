@@ -8,17 +8,19 @@
 
 import SwiftUI
 import MediaPlayer
+import SDWebImageSwiftUI
 
 struct PlayerView: View {
     @Binding var musicPlayer: MPMusicPlayerController
     @State private var isPlaying = false
+    @Binding var currentSong: Song
     
     var body: some View {
         GeometryReader { geometry in
             // 1
             VStack(spacing: 24) {
                 // 2
-                Image(systemName: "a.square")
+                WebImage(url: URL(string: self.currentSong.artworkURL.replacingOccurrences(of: "{w}", with: "\(Int(geometry.size.width - 24) * 2)").replacingOccurrences(of: "{h}", with: "\(Int(geometry.size.width - 24) * 2)")))
                     .resizable() //3
                     .frame(width: geometry.size.width - 24, height: geometry.size.width - 24) //4
                     .cornerRadius(20)
@@ -95,3 +97,9 @@ struct PlayerView: View {
     }
 }
 
+
+struct PlayerView_Previews: PreviewProvider {
+    static var previews: some View {
+        /*@START_MENU_TOKEN@*/Text("Hello, World!")/*@END_MENU_TOKEN@*/
+    }
+}
