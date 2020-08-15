@@ -37,7 +37,7 @@ struct SearchView: View {
             })
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .padding(.horizontal, 16)
-                .accentColor(.pink)
+                .accentColor(.blue)
             
             List {
                 // 1
@@ -67,12 +67,12 @@ struct SearchView: View {
                             self.musicPlayer.play()
                         }) {
                             Image(systemName: "play.fill")
-                                .foregroundColor(.pink)
+                                .foregroundColor(.blue)
                         }
                     }
                 }
             }
-            .accentColor(.pink)
+            .accentColor(.blue)
         }
     }
 }

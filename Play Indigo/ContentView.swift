@@ -33,7 +33,7 @@ struct ContentView: View {
                     }
             }
         }
-        .accentColor(.pink)
+        .accentColor(.blue)
         //        .onAppear() {
         //            SKCloudServiceController.requestAuthorization { (status) in
         //                if status == .authorized {

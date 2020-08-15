@@ -43,7 +43,7 @@ struct PlayerView: View {
                         ZStack {
                             Circle()
                                 .frame(width: 80, height: 80)
-                                .accentColor(.pink)
+                                .accentColor(.blue)
                                 .shadow(radius: 10)
                             Image(systemName: "backward.fill")
                                 .foregroundColor(.white)
@@ -63,7 +63,7 @@ struct PlayerView: View {
                         ZStack {
                             Circle()
                                 .frame(width: 80, height: 80)
-                                .accentColor(.pink)
+                                .accentColor(.blue)
                                 .shadow(radius: 10)
                             Image(systemName: self.isPlaying ? "pause.fill" : "play.fill")
                                 .foregroundColor(.white)
@@ -77,7 +77,7 @@ struct PlayerView: View {
                         ZStack {
                             Circle()
                                 .frame(width: 80, height: 80)
-                                .accentColor(.pink)
+                                .accentColor(.blue)
                                 .shadow(radius: 10)
                             Image(systemName: "forward.fill")
                                 .foregroundColor(.white)
