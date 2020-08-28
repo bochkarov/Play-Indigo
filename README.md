@@ -7,7 +7,7 @@ When you first run this application, you will be asked for access Apple Music, u
 <img width="300" alt="Screenshot 2020-08-15 at 13 55 01" src="https://user-images.githubusercontent.com/55511062/90312123-31ffd580-df02-11ea-87f5-06f00e99a27a.png">
 
 
-On the Search tab, the user can search the artist by name and get a list of songs. Also user can click on Play button and play the song.
+On the Search tab the user can search the artist by name and get a list of songs. Also user can click on Play button and play the song.
 
 <img width="250" alt="Screenshot 2020-08-15 at 13 55 01" src="https://user-images.githubusercontent.com/55511062/90313315-f964f980-df0b-11ea-834e-107dca23ba57.png">
 
